@@ -14,7 +14,7 @@ There are two parts to this project.
 
 Use Github as a cms to host a blog. Where I provide tutorials on how the project is set up.
 
-## Part 2
+### Part 2
 
 Use it to showcase a portfolio combined with Github pages.
 
