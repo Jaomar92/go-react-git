@@ -66,7 +66,7 @@ const Home = () => {
       <section className="container mx-auto max-w-6xl pt-8 space-y-3">
         <h2 className="text-3xl font-mono text-neutral-100">My latest Works</h2>
         <p className="text-neutral-100 py-3 font-mono">
-          Works are modified to explode client information
+          Works are modified to exclude client information
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-neutral-100 place-content-center ">
           <div className="p-3 border-2 border-dashed border-neutral-400 rounded-xl">

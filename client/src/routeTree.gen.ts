@@ -10,107 +10,107 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as ContactImport } from './routes/Contact'
-import { Route as AboutImport } from './routes/About'
-import { Route as IndexImport } from './routes/index'
-import { Route as PortfolioIndexImport } from './routes/portfolio/index'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as ContactImport } from "./routes/Contact";
+import { Route as AboutImport } from "./routes/About";
+import { Route as IndexImport } from "./routes/index";
+import { Route as PortfolioIndexImport } from "./routes/portfolio/index";
 
 // Create/Update Routes
 
 const ContactRoute = ContactImport.update({
-  path: '/Contact',
+  path: "/Contact",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const AboutRoute = AboutImport.update({
-  path: '/About',
+  path: "/About",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const IndexRoute = IndexImport.update({
-  path: '/',
+  path: "/",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const PortfolioIndexRoute = PortfolioIndexImport.update({
-  path: '/portfolio/',
+  path: "/portfolio/",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/About': {
-      id: '/About'
-      path: '/About'
-      fullPath: '/About'
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
-    }
-    '/Contact': {
-      id: '/Contact'
-      path: '/Contact'
-      fullPath: '/Contact'
-      preLoaderRoute: typeof ContactImport
-      parentRoute: typeof rootRoute
-    }
-    '/portfolio/': {
-      id: '/portfolio/'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioIndexImport
-      parentRoute: typeof rootRoute
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/About": {
+      id: "/About";
+      path: "/About";
+      fullPath: "/About";
+      preLoaderRoute: typeof AboutImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/Contact": {
+      id: "/Contact";
+      path: "/Contact";
+      fullPath: "/Contact";
+      preLoaderRoute: typeof ContactImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/portfolio/": {
+      id: "/portfolio/";
+      path: "/portfolio";
+      fullPath: "/portfolio";
+      preLoaderRoute: typeof PortfolioIndexImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/About': typeof AboutRoute
-  '/Contact': typeof ContactRoute
-  '/portfolio': typeof PortfolioIndexRoute
+  "/": typeof IndexRoute;
+  "/About": typeof AboutRoute;
+  "/Contact": typeof ContactRoute;
+  "/portfolio": typeof PortfolioIndexRoute;
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/About': typeof AboutRoute
-  '/Contact': typeof ContactRoute
-  '/portfolio': typeof PortfolioIndexRoute
+  "/": typeof IndexRoute;
+  "/About": typeof AboutRoute;
+  "/Contact": typeof ContactRoute;
+  "/portfolio": typeof PortfolioIndexRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/About': typeof AboutRoute
-  '/Contact': typeof ContactRoute
-  '/portfolio/': typeof PortfolioIndexRoute
+  __root__: typeof rootRoute;
+  "/": typeof IndexRoute;
+  "/About": typeof AboutRoute;
+  "/Contact": typeof ContactRoute;
+  "/portfolio/": typeof PortfolioIndexRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/About' | '/Contact' | '/portfolio'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/About' | '/Contact' | '/portfolio'
-  id: '__root__' | '/' | '/About' | '/Contact' | '/portfolio/'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/About" | "/Contact" | "/portfolio";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/About" | "/Contact" | "/portfolio";
+  id: "__root__" | "/" | "/About" | "/Contact" | "/portfolio/";
+  fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ContactRoute: typeof ContactRoute
-  PortfolioIndexRoute: typeof PortfolioIndexRoute
+  IndexRoute: typeof IndexRoute;
+  AboutRoute: typeof AboutRoute;
+  ContactRoute: typeof ContactRoute;
+  PortfolioIndexRoute: typeof PortfolioIndexRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -118,11 +118,11 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
-}
+};
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
 /* prettier-ignore-end */
 
