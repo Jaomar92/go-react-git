@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <main className="bg-neutral-900 min-h-screen mt-[-5px]">
+    <main className="bg-neutral-900 min-h-screen mt-[-5px] selection:bg-neutral-500">
       <section className="text-neutral-100 container mx-auto max-w-6xl">
         <div className="py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -80,9 +80,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="space-y-3">
               <h2 className="font-mono text-xl">Pricing</h2>
-              <div className="max-w-md py-3">
-                <hr />
-              </div>
+              <div className="max-w-md border-b-2 border-spacing-3 border-dashed border-neutral-400"></div>
               <div className="max-w-md flex items-center justify-between">
                 <h4 className="font-mono">Web-Development</h4>
                 <p className="font-mono">RM 650/hr</p>
@@ -119,7 +117,7 @@ const About = () => {
                   </div>
                 </div>
               </div>
-
+              <div className="max-w-md border-b-2 border-spacing-3 border-dashed border-neutral-400"></div>
               <p className="max-w-md font-mono">
                 <span className="text-xl font-medium">NOTE: </span>
                 Prices are for labour. Other expense are billed seperately.
