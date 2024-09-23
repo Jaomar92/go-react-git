@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
+
+import { Link, useLocation } from "@tanstack/react-router";
 const NavItems = [
   { name: "About", page: "/about" },
   { name: "Portfolio", page: "/portfolio" },
@@ -11,6 +12,9 @@ const NavItems = [
 // Break Mobile nav layout and Desktop later
 
 const Navbar = () => {
+  const location = useLocation();
+  const url = location.pathname;
+
   return (
     <nav className="sticky top-0 bg-neutral-800 text-neutral-100">
       <div className="container mx-auto py-4 max-w-6xl">
@@ -26,7 +30,7 @@ const Navbar = () => {
                 <Link
                   to={item.page}
                   key={i}
-                  className="text-lg font-bold text-neutral-100/40 hover:text-neutral-100"
+                  className={`text-lg font-bold ${url === item.page ? "text-neutral-100" : "text-neutral-100/40 hover:text-neutral-100"}`}
                 >
                   {item.name}
                 </Link>
@@ -34,7 +38,7 @@ const Navbar = () => {
             })}
           </div>
           <div>
-            <Button className="px-8 py-6 rounded-full bg-sky-500 text-neutral-50 text-xl font-bold hover:bg-sky-700">
+            <Button className="p-5 bg-sky-500 text-neutral-50 text-xl font-bold hover:bg-sky-700">
               Hire
             </Button>
           </div>

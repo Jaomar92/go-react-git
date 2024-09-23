@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as ContactImport } from './routes/Contact'
 import { Route as AboutImport } from './routes/About'
 import { Route as IndexImport } from './routes/index'
+import { Route as PortfolioIndexImport } from './routes/portfolio/index'
 
 // Create/Update Routes
 
@@ -29,6 +30,11 @@ const AboutRoute = AboutImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PortfolioIndexRoute = PortfolioIndexImport.update({
+  path: '/portfolio/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -57,6 +63,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactImport
       parentRoute: typeof rootRoute
     }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -66,12 +79,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/About': typeof AboutRoute
   '/Contact': typeof ContactRoute
+  '/portfolio': typeof PortfolioIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/About': typeof AboutRoute
   '/Contact': typeof ContactRoute
+  '/portfolio': typeof PortfolioIndexRoute
 }
 
 export interface FileRoutesById {
@@ -79,14 +94,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/About': typeof AboutRoute
   '/Contact': typeof ContactRoute
+  '/portfolio/': typeof PortfolioIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/About' | '/Contact'
+  fullPaths: '/' | '/About' | '/Contact' | '/portfolio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/About' | '/Contact'
-  id: '__root__' | '/' | '/About' | '/Contact'
+  to: '/' | '/About' | '/Contact' | '/portfolio'
+  id: '__root__' | '/' | '/About' | '/Contact' | '/portfolio/'
   fileRoutesById: FileRoutesById
 }
 
@@ -94,12 +110,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  PortfolioIndexRoute: PortfolioIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,7 +134,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/About",
-        "/Contact"
+        "/Contact",
+        "/portfolio/"
       ]
     },
     "/": {
@@ -127,6 +146,9 @@ export const routeTree = rootRoute
     },
     "/Contact": {
       "filePath": "Contact.tsx"
+    },
+    "/portfolio/": {
+      "filePath": "portfolio/index.tsx"
     }
   }
 }
